@@ -3,13 +3,13 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('product_details', {
-      productDets_id: {
+      productDet_id: {
         type: Sequelize.BIGINT,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false
       },
-      productDets_uuid: {
+      productDet_uuid: {
         type: Sequelize.STRING,
         allowNull: false
       },

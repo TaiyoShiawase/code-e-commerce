@@ -2,14 +2,14 @@ const {DataTypes} = require('sequelize')
 const instance = require('../dbconnection')
 
 const account = instance.sequelize.define('accounts', {
-    accounts_id: {
+    account_id: {
       type: DataTypes.BIGINT,
       autoIncrement: true,
       primaryKey: true,
       allowNull: false
     },
-    accounts_uuid: {
-      type: DataTypes.BIGINT,
+    account_uuid: {
+      type: DataTypes.STRING,
       allowNull: false
     },
     firstName: {
@@ -42,7 +42,7 @@ const account = instance.sequelize.define('accounts', {
     createdAt: true,
     updatedAt: true,
     deletedAt: true,
-    tableName: 'account'
+    tableName: 'accounts'
 })
 
 exports.model = account

@@ -2,13 +2,13 @@ const {DataTypes} = require('sequelize')
 const instance = require('../dbconnection')
 
 const product_stocks = instance.sequelize.define('product_stocks', {
-    productStocks_id: {
+    productStock_id: {
       type: DataTypes.BIGINT,
       autoIncrement: true,
       primaryKey: true,
       allowNull: false
     },
-    productDets_id: {
+    productDet_id: {
       type: DataTypes.STRING,
       allowNull: false
     },

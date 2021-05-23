@@ -3,14 +3,14 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('accounts', {
-      accounts_id: {
+      account_id: {
         type: Sequelize.BIGINT,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false
       },
-      accounts_uuid: {
-        type: Sequelize.BIGINT,
+      account_uuid: {
+        type: Sequelize.STRING,
         allowNull: false
       },
       firstName: {
