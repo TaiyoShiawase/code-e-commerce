@@ -4,6 +4,14 @@ const router = express.Router()
 const auth = require('../auth')
 const accountController = require('../controller/accountController')
 const customerHomeController = require('../controller/customerHomeController')
+const allShirtController = require('../controller/shirtController')
+const allHoodiesProduct = require('../controller/hoodiesController')
+
+const productDetails = require('../controller/productDetails')
+
+
+const allBrandsController = require('../controller/allBrandsController')
+
 
 router.get('/', customerHomeController.getCustomerHomepage)
 
@@ -22,5 +30,14 @@ router.get('/cart', customerHomeController.getCustomerCart)
 router.get('/checkout', auth.checkAuthentication, customerHomeController.getCustomerCheckoutPage)
 
 router.delete('/logout', accountController.logout)
+
+
+router.get('/product/shirts-all', allShirtController.getAllShirtProducts)
+
+router.get('/product/hoodies-all', allHoodiesProduct.getAllHoodieProducts)
+
+router.get('/product/shirts/id', productDetails.getProductDetails)
+
+router.get('/product/all-brands', allBrandsController.getAllProducts)
 
 module.exports = router

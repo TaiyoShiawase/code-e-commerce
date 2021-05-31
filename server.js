@@ -22,6 +22,9 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
 
+
+
+
 app.use('/', customerRoutes)
 
 app.listen(8080, () => console.log('Server is Running: PORT 8080'))
