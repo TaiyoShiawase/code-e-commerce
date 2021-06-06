@@ -1,58 +1,50 @@
 'use strict';
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('accounts', {
-      account_id: {
+    await queryInterface.createTable('Products', {
+      productDet_id: {
         type: Sequelize.BIGINT,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false
       },
-      account_uuid: {
-        type: Sequelize.UUIDV4,
-        allowNull: false
-      },
-      firstName: {
+      filename: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      lastName: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      address: {
+      desc: {
         type: Sequelize.STRING,
+      },
+      type: {
+        type: Sequelize.ENUM('Hoodie', 'Shirt'),
         allowNull: false
       },
-      phoneNumber: {
-        type: Sequelize.STRING,
-        unique: true,
+      unit_price: {
+        type: Sequelize.DECIMAL(10, 2),
         allowNull: false
       },
-      email: {
-        type: Sequelize.STRING,
-        unique: true,
-        allowNull: false
-      },
-      password: {
-        type: Sequelize.STRING,
-        allowNull: false
+      brand_id: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
-        type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.DATE
       },
       updatedAt: {
+        allowNull: false,
         type: Sequelize.DATE
       },
       deletedAt: {
+        allowNull: false,
         type: Sequelize.DATE
       }
-    })
+    });
   },
-
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('accounts')
+    await queryInterface.dropTable('Products');
   }
 };

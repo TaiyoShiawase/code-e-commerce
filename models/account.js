@@ -9,7 +9,7 @@ const account = instance.sequelize.define('accounts', {
       allowNull: false
     },
     account_uuid: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUIDV4,
       allowNull: false
     },
     firstName: {
