@@ -15,6 +15,7 @@ const allBrandsController = require('../controller/allBrandsController')
 
 const searchController = require('../controller/searchController')
 const cart = require('../controller/cartController');
+const historyController = require('../controller/historyController');
 
 router.get('/', customerHomeController.getCustomerHomepage)
 
@@ -41,6 +42,9 @@ router.get('/product/hoodies-all', allHoodiesProduct.getAllHoodieProducts)
 
 router.get('/product/shirts/id', productDetails.getProductDetails)
 
+
+
+router.get('/purchase-history', historyController.getPurchaseHistory)
 
 
 
