@@ -45,7 +45,35 @@ a{
     bottom: 0;
     width: auto;
 }
+/*PRE LOADER*/
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #242f3f;
 
+}
+.loader {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  border: 4px solid #fff;
+  top: 50%;
+  animation: loader 4s infinite ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 4s infinite ease-in;
+}
 
 /* The side navigation menu */
 .sidebar {

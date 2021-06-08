@@ -1,5 +1,8 @@
 <%- include('./partials/head'); %>
-        <form class="example col-sm-12 mb-4 p-0 mx-0" action="/">
+
+
+
+        <form class="example col-sm-12 mb-4 p-0 mx-0" action="/search-brand" method="GET">
             <div class="p-0
                 col-sm-10 col-lg-8 col-xl-6 col-xxl-5
                 offset-sm-1 offset-lg-2 offset-xl-3 offset-xxl-4">
@@ -98,13 +101,64 @@
             <% } %>
         </div>
 
-        <section>
+        <!-- <section class="row list">
             <% for(var i=0; i < product.length; i++) { %>
-            <h1><%= product[i].name %></h1>
+              <div class="col-md-12 car-card">
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-4 car-img">
+                      <img src="<%=product[i].name %>" alt="..." >
+                    </div>
+                    <div class="col-md-5 car-info">
+                      <div class="card-body">
+                        <h5 ><%=product[i].name %></h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                    <div class="vertical-hr c-hr" style="height: 135px; margin: auto 0"></div>
+                    <div class="col button-list">
+                      <div class="btn-alt2">
+                        <a href="" class="active btn btn-block">Rent Now</a>
+                        <a href="" class="btn btn-block mt-3">View Details</a>
+                        <div class="price-perday mt-3">
+                          <p ></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <% } %>
-          </section> 
+          </section>  -->
+          <div class="row justify-content-center">
+            <% for(var i=0; i < product.length; i++) { %>
+            <div class="col-sm-4 mt-5">
+                <a href="">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="card-img-top" src="/images/product2.png" alt="Card image cap">
+                        <h5 class="card-title">HOODIES</h5>
+                        <hr>
+                        <span>ICONIC</span>
+                        <h5 class="card-title">PHP 1500.00</h5>
+                    </div>
+                </div>
+            </a>
+            </div>
+            <% } %>
+        </div>
 
-
+        <br><br>
 
     </div>
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span> 
+        </div>
+        
+    <script>
+        $(window).on("load", function(){
+            $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
 <%- include('./partials/footer'); %>
