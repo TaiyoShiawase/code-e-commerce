@@ -11,10 +11,12 @@
                         <input type="text" placeholder="Search" name="search" 
                                 class="float-left rounded-start col bg-white">
                         <div class="input-group-append">
-                        <button class="border-end btn btn-info col px-5" type="submit"><i class="fa fa-search"></i></button>
+                        <button class="border-end btn btn-dark col px-5" type="submit"><i class="fa fa-search"></i></button>
                         </div>
                     </div>
-            </div>
+                </div>
+             </form>
+            <form action="">
             <div class=" bt-3 pt-2 pb-4">
                 <div class="bg-white offset-1 col-10 rounded border shadow-sm p-4 mb-4">
                     <div class="col-12">
@@ -46,6 +48,7 @@
                             <input type="checkbox" cname="Shoes" id="option4" autocomplete="off" checked> Shoes
                         </button>
                     </div>
+                    <center><button type="submit" class=" btn btn-dark btn-rounded pt-2 mt-4" type="submit">APPLY FILTERS</button></center>
                 </div>
             </div>
         </form>
@@ -134,14 +137,14 @@
           <div class="row justify-content-center">
             <% for(var i=0; i < product.length; i++) { %>
             <div class="col-sm-4 mt-5">
-                <a href="">
+                <a href="/product/<%= product[i].product_id %>">
                 <div class="card">
                     <div class="card-body">
-                        <img class="card-img-top" src="/images/product2.png" alt="Card image cap">
+                        <img class="card-img-top" src="<%=product[i].image %>" alt="Card image cap">
                         <h5 class="card-title">HOODIES</h5>
                         <hr>
                         <span>ICONIC</span>
-                        <h5 class="card-title">PHP 1500.00</h5>
+                        <h5 class="card-title">PHP&nbsp;<%= product[i].unit_price %></h5>
                     </div>
                 </div>
             </a>
@@ -152,13 +155,10 @@
         <br><br>
 
     </div>
-    <div class="loader-wrapper">
-        <span class="loader"><span class="loader-inner"></span></span> 
-        </div>
-        
-    <script>
-        $(window).on("load", function(){
-            $(".loader-wrapper").fadeOut("slow");
-        });
-    </script>
+    <hr>
+
+    <% if(product.length > 0 ){ %>
+    <h1>RELATED PRODUCTS</h1>
+    <% } %>
+
 <%- include('./partials/footer'); %>
