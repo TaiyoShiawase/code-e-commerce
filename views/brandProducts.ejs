@@ -1,7 +1,41 @@
 <%- include('./partials/head'); %>
 
 
-<h1>IM HERE</h1>
+<div class="filter-items">
+    <% if(product.length == 0){ %>
+      <div class="container px-lg-5">
+        <div class="row mx-lg-n5">
+          <div class="col py-3 px-lg-5">
+          </div>
+            
+            <div class="alert alert-warning p-5">
+             <h3>No matches for the value you've entered</h3>
+             <h4>Some helpful tips</h4>
+             <ul>
+                <li>Check for spelling mistakes, e.g. "jakcet" instead of "jacket"</li>
+                <li>Try searching for a similar term or synonym, e.g. "t-shirt" instead of "tops"</li>
+                <li>Enter a keyword or general term and filter the search results</li>
+            </ul>
+
+
+
+
+
+            </div>
+          <div class="col py-3 px-lg-5">
+          </div>
+        </div>
+      </div>
+    <% } %>
+</div>
+
+<section>
+<% for(var i=0; i < product.length; i++) { %>
+    <div class="products">
+        <h1><%=product[i].name %></h1>
+    </div>
+    <% } %>
+</section>
 
 
 <%- include('./partials/footer'); %>

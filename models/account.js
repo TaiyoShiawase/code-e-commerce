@@ -1,15 +1,12 @@
 const {DataTypes} = require('sequelize')
 const instance = require('../dbconnection')
 
+
 const account = instance.sequelize.define('accounts', {
     account_id: {
       type: DataTypes.BIGINT,
       autoIncrement: true,
       primaryKey: true,
-      allowNull: false
-    },
-    account_uuid: {
-      type: DataTypes.UUIDV4,
       allowNull: false
     },
     firstName: {

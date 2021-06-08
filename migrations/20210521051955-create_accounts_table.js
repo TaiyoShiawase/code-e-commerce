@@ -9,10 +9,6 @@ module.exports = {
         primaryKey: true,
         allowNull: false
       },
-      account_uuid: {
-        type: Sequelize.UUIDV4,
-        allowNull: false
-      },
       firstName: {
         type: Sequelize.STRING,
         allowNull: false
