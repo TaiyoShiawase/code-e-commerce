@@ -18,6 +18,10 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
         references: {model: "stocks", key: "stock_id"},
     },
+      image: {
+          type: DataTypes.STRING,
+          allowNull: false,
+      },
         name: {
           type: DataTypes.STRING,
           allowNull: false,

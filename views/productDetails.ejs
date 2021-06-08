@@ -14,10 +14,7 @@
 
                         <div class="col-12 mb-0">
                             <figure class="view overlay rounded z-depth-1 main-img">
-                                <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                                    data-size="710x823">
-                                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                                        class="img-fluid z-depth-1">
+                                <img src="<%= product[0].image %>" style="height: 300px; width: 300px;" alt="">
                                 </a>
                             </figure>
                            
@@ -51,7 +48,7 @@
                         <i class="far fa-star fa-sm text-primary"></i>
                     </li>
                 </ul>
-                <p><span class="mr-1"><strong>$12.99</strong></span></p>
+                <p><span class="mr-1"><strong><%= product[0].unit_price %></strong></span></p>
                 <p class="pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
                     error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
                     officia quis dolore quos sapiente tempore alias.</p>

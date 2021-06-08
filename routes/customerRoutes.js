@@ -16,6 +16,8 @@ const allBrandsController = require('../controller/allBrandsController')
 const searchController = require('../controller/searchController')
 
 
+const productDetailsController = require('../controller/viewProductController')
+
 router.get('/', customerHomeController.getCustomerHomepage)
 
 router.get('/login', auth.checkNotAuthenticated, accountController.getCustomerLoginPage)
@@ -50,6 +52,10 @@ router.get('/search-brand', searchController.searchByBrand)
 
  router.get('/product/all-brands', allBrandsController.getAllProducts)   
 
+
+ //get product details
+
+ router.get('/product/:product_id', productDetailsController.viewProduct)
 
 
 module.exports = router
