@@ -1,6 +1,6 @@
 <%- include('./partials/head'); %>
 
-    <div class="bg-white shadow-sm border rounded mb-5
+    <div class="bg-white shadow border rounded mb-5
                 col-sm-12 col-xl-10
                 offset-sm-0 offset-xl-1
                 ">
@@ -65,17 +65,24 @@
                     </div>
 
                     <div class="row pt-3">
-                        <h5 class="col-sm-12">
-                            <span class="font-weight-bold ">Price:</span>
-                        </h5>
                         <div class="col-6 p-2 pt-3 pr-3">
-                                    <h4 class="text-secondary text-right">₱ Ammnt.00</h4>
+                            <h5 class="col-sm-12">
+                                <span class="font-weight-bold ">Quantity:</span>
+                            </h5>
+                            <input type="number" class="text-right p-2 ml-3 rounded border shadow-sm" 
+                                min="1" max="" step="1" value="1"> <!--setmax-->
+                            
                         </div>
-                        <div class="col-6 p-1 pt-2 text-center justify-content-center">
-                            <a href="/cart" type="button" class="btn btn-light btn-md mr-1 mb-2 py-2 px-4  border shadow-sm"><i
-                                    class="fas fa-shopping-cart pr-2 align-self-center"></i>Add to cart</a>
-
+                        <div class="col-6 p-2 pt-3 pr-3">
+                            <h5 class="col-sm-12">
+                                <span class="font-weight-bold ">Price:</span>
+                            </h5>
+                            <span class="ml-3" style="font-size: 25px;">₱ Ammnt.00</span>
                         </div>
+                    </div>
+                    <div class="col-10 offset-1 p-1 pt-2 text-center justify-content-center">
+                        <a href="/cart" type="button" class="col btn btn-light btn-md mr-1 mb-2 py-2 px-4  border shadow-sm">
+                            <i class="fas fa-shopping-cart pr-2 align-self-center"></i>Add to cart</a>
                     </div>
                 </div>
             </div>
