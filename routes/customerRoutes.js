@@ -14,9 +14,7 @@ const allBrandsController = require('../controller/allBrandsController')
 
 
 const searchController = require('../controller/searchController')
-
-
-const productDetailsController = require('../controller/viewProductController')
+const cart = require('../controller/cartController');
 
 router.get('/', customerHomeController.getCustomerHomepage)
 
@@ -50,12 +48,11 @@ router.get('/product/shirts/id', productDetails.getProductDetails)
 
 router.get('/search-brand', searchController.searchByBrand)
 
- router.get('/product/all-brands', allBrandsController.getAllProducts)   
+ router.get('/product/all-brands', allBrandsController.getAllProducts)  
+ 
+ router.post('/addToCart', cart.addToCart)
+ router.get('/cart', cart.getCart)
 
-
- //get product details
-
- router.get('/product/:product_id', productDetailsController.viewProduct)
 
 
 module.exports = router

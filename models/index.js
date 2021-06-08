@@ -28,10 +28,10 @@ if (config.use_env_variable) {
 
 
 const models = [
-
     require("./brand")(sequelize, DataTypes),
     require("./product")(sequelize, DataTypes),
     require("./stocks")(sequelize, DataTypes),
+    require("./cart")(sequelize, DataTypes),
   ];  
 
 // Object.keys(db).forEach(modelName => {

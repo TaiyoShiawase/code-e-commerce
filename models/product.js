@@ -18,10 +18,6 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
         references: {model: "stocks", key: "stock_id"},
     },
-      image: {
-          type: DataTypes.STRING,
-          allowNull: false,
-      },
         name: {
           type: DataTypes.STRING,
           allowNull: false,
@@ -53,6 +49,10 @@ module.exports = function (sequelize, DataTypes) {
     });
     products.belongsTo(models.brands, {
       foreignKey: "brand_id",
+      onDelete: "cascade",
+    });
+    products.belongsTo(models.cart, {
+      foreignKey: "cart_id",
       onDelete: "cascade",
     });
   };
