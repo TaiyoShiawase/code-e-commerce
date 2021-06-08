@@ -1,41 +1,110 @@
 <%- include('./partials/head'); %>
-
-
-<div class="filter-items">
-    <% if(product.length == 0){ %>
-      <div class="container px-lg-5">
-        <div class="row mx-lg-n5">
-          <div class="col py-3 px-lg-5">
-          </div>
-            
-            <div class="alert alert-warning p-5">
-             <h3>No matches for the value you've entered</h3>
-             <h4>Some helpful tips</h4>
-             <ul>
-                <li>Check for spelling mistakes, e.g. "jakcet" instead of "jacket"</li>
-                <li>Try searching for a similar term or synonym, e.g. "t-shirt" instead of "tops"</li>
-                <li>Enter a keyword or general term and filter the search results</li>
-            </ul>
-
-
-
-
-
+        <form class="example col-sm-12 mb-4 p-0 mx-0" action="/">
+            <div class="p-0
+                col-sm-10 col-lg-8 col-xl-6 col-xxl-5
+                offset-sm-1 offset-lg-2 offset-xl-3 offset-xxl-4">
+                    
+                    <div class="row px-0 m-0 input-group">
+                        <input type="text" placeholder="Search" name="search" 
+                                class="float-left rounded-start col bg-white">
+                        <div class="input-group-append">
+                        <button class="border-end btn btn-info col px-5" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
             </div>
-          <div class="col py-3 px-lg-5">
-          </div>
+            <div class=" bt-3 pt-2 pb-4">
+                <div class="bg-white offset-1 col-10 rounded border shadow-sm p-4 mb-4">
+                    <div class="col-12">
+                        <div class="input-group input-group-lg mb-3 px-4">
+                            <div class= "input-group-prepend btn-group-toggle" data-toggle="buttons">
+                                <button type="button" id="minPrice" class="btn btn-light border" data-bs-toggle="button" value="Shoes">
+                                    <input type="checkbox" cname="minPrice" autocomplete="off"> <span class=" font-weight-bold"> PHP</span>
+                                </button>
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Min Price</span>
+                            </div>
+                            <input type="number" class="input-group form-control" min="1" max="9990" step ="0.25" value ="1">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Max Price</span>
+                            </div>
+                            <input type="number" class="input-group form-control" min="10" max="10000" step ="0.25" value ="10000">
+                        </div>
+                    </div>   
+                    <div class="btn-group btn-group-toggle col" role="group" aria-label="Basic example" data-toggle="buttons">
+                        <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shirts">
+                            <input type="checkbox" cname="Shirts" id="option1" autocomplete="off" checked> Shirts
+                        </button>
+                        <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Hoodies">
+                            <input type="checkbox" cname="Hoodies" id="option2" autocomplete="off" checked> Hoodies
+                        </button>
+                        <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shorts">
+                            <input type="checkbox" cname="Shorts" id="option3" autocomplete="off" checked> Shorts
+                        </button>
+                        <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shoes">
+                            <input type="checkbox" cname="Shoes" id="option4" autocomplete="off" checked> Shoes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        
+    <div class="row justify-content-center">
+        <!-- <div class="col-sm-4">
+            <a href="">
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img-top" src="/images/product2.png" alt="Card image cap">
+                    <h5 class="card-title">HOODIES</h5>
+                    <hr>
+                    <span>ICONIC</span>
+                    <h5 class="card-title">PHP 1500.00</h5>
+                </div>
+            </div>
+        </a>
         </div>
-      </div>
-    <% } %>
-</div>
+        <div class="col-sm-4">
+            <a href="">
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img-top" src="/images/product2.png" alt="Card image cap">
+                    <h5 class="card-title">HOODIES</h5>
+                    <hr>
+                    <span>ICONIC</span>
+                    <h5 class="card-title">PHP 1500.00</h5>
+                </div>
+            </div>
+        </a>
+        </div> -->
+        <div class="filter-items">
+            <% if(product.length == 0){ %>
+              <div class="container px-lg-5">
+                <div class="row mx-lg-n5">
+                  <div class="col py-3 px-lg-5">
+                  </div>
+                    
+                    <div class="alert alert-warning p-5">
+                     <h3>No matches for the value you've entered</h3>
+                     <h4>Some helpful tips</h4>
+                     <ul>
+                        <li>Check for spelling mistakes, e.g. "jakcet" instead of "jacket"</li>
+                        <li>Try searching for a similar term or synonym, e.g. "t-shirt" instead of "tops"</li>
+                        <li>Enter a keyword or general term and filter the search results</li>
+                    </ul>
+                    </div>
+                  <div class="col py-3 px-lg-5">
+                  </div>
+                </div>
+              </div>
+            <% } %>
+        </div>
 
-<section>
-<% for(var i=0; i < product.length; i++) { %>
-    <div class="products">
-        <h1><%=product[i].name %></h1>
+        <section>
+            <% for(var i=0; i < product.length; i++) { %>
+            <h1><%= product[i].name %></h1>
+            <% } %>
+          </section> 
+
+
+
     </div>
-    <% } %>
-</section>
-
-
 <%- include('./partials/footer'); %>

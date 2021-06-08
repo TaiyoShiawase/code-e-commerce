@@ -134,6 +134,7 @@ a{
   background: #000;
 }
 
+<<<<<<< HEAD
 /*FILTER*/
 
 .filter-content {
@@ -404,3 +405,6 @@ VIEW CAR DETAILS STYLES
   border-radius: 100%;
   border: 3px solid rgba(0, 0, 0, 0.2);
 }
+=======
+/*Filter*/
+>>>>>>> 3e19f9e8e348bfc2aca5b92a6ad2a6ca011cb57f
