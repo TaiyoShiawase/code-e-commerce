@@ -30,10 +30,17 @@ module.exports = function (sequelize, DataTypes) {
       underscored: true,
     }
   );
-//   stocks.associate = (models) => {
-//     stocks.belongsTo(models.products, {
-//       foreignKey: "product_id",
-//     });
-//   };
+
+  stocks.associate = (models) => {
+    stocks.belongsTo(models.products, {
+      foreignKey: "product_id",
+    });
+
+    stocks.belongsTo(models.cart, {
+      foreignKey: "cart_id",
+    });
+  };
+
   return stocks;
 };
+
