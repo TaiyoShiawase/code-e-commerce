@@ -1,10 +1,5 @@
 <%- include('./partials/head'); %>
 
-
-    <!-- <div class="search-input">
-        <input class="form-control" id="myInput" type="text" placeholder="35% Off Hoodies,Shirts">
-    </div> -->
-    
     <form class="example col-sm-12 mb-4 p-0 mx-0" action="/">
         <div class="p-0
             col-sm-10 col-lg-8 col-xl-6 col-xxl-5
@@ -18,26 +13,35 @@
                     </div>
                 </div>
         </div>
-        <div class=" bt-3 pt-3 pb-4">
-            <div class="bg-white offset-1 col-10 rounded border shadow-sm p-4">
+        <div class=" bt-3 pt-2 pb-4">
+            <div class="bg-white offset-1 col-10 rounded border shadow-sm p-4 mb-4">
                 <div class="col-12">
-                    <label for="Price" class="form-label"><span class="font-weight-bold">Price</span> [PHP]</label>
-                <div data-role="rangeslider">
-                
-                </div>
-                </div>
+                    <div class="input-group input-group-lg mb-3 px-4">
+                        <div class= "input-group-prepend btn-group-toggle" data-toggle="buttons">
+                            <button type="button" id="minPrice" class="btn btn-light border" data-bs-toggle="button" value="Shoes">
+                                <input type="checkbox" cname="minPrice" autocomplete="off"> <span class=" font-weight-bold"> PHP</span>
+                            </button>
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Min Price</span>
+                        </div>
+                        <input type="number" class="input-group form-control" min="1" max="9990" step ="0.25" value ="1">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Max Price</span>
+                        </div>
+                        <input type="number" class="input-group form-control" min="10" max="10000" step ="0.25" value ="10000">
+                    </div>
+                      
                 <div class="btn-group btn-group-toggle col" role="group" aria-label="Basic example" data-toggle="buttons">
-                    <button type="button" class="btn btn-light border" data-bs-toggle="button" value="Shirts" default="active">
-                        <input type="checkbox" cname="options" id="option1" autocomplete="off" checked> Shirts
+                    <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shirts">
+                        <input type="checkbox" cname="Shirts" id="option1" autocomplete="off" checked> Shirts
                     </button>
-                    <button type="button" class="btn btn-light border" data-bs-toggle="button" value="Hoodies">
-                        <input type="checkbox" cname="options" id="option2" autocomplete="off" checked> Hoodies
+                    <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Hoodies">
+                        <input type="checkbox" cname="Hoodies" id="option2" autocomplete="off" checked> Hoodies
                     </button>
-                    <button type="button" class="btn btn-light border" data-bs-toggle="button" value="Shorts">
-                        <input type="checkbox" cname="options" id="option3" autocomplete="off" checked> Shorts
+                    <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shorts">
+                        <input type="checkbox" cname="Shorts" id="option3" autocomplete="off" checked> Shorts
                     </button>
-                    <button type="button" class="btn btn-light border" data-bs-toggle="button" value="Shoes">
-                        <input type="checkbox" cname="options" id="option4" autocomplete="off" checked> Shoes
+                    <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shoes">
+                        <input type="checkbox" cname="Shoes" id="option4" autocomplete="off" checked> Shoes
                     </button>
                 </div>
             </div>
@@ -138,7 +142,6 @@
         </div>
     </div>
 
-
     <div class="deals mb-4 pt-3">
         <center>
             <h1>GREAT DEALS</h1>
@@ -183,5 +186,4 @@
             alert(inputValue);
         });
     </script>
-
-    <%- include('./partials/footer'); %>
+>
