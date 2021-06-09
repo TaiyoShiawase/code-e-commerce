@@ -1,4 +1,4 @@
-# E-Commerce Website for Code Fresh Apparel
+# E-Commerce Website
 
 
 Members:
