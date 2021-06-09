@@ -25,7 +25,7 @@ function initialize(passport, getUserByEmail, getUserById){
 
     passport.deserializeUser((id, done) => {
         const res = getUserById(id)
-        
+
         res.then((customer) => {
             return done(null, customer) 
         })

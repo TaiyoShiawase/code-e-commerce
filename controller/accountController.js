@@ -21,36 +21,11 @@ initializePassport(passport,
 )
 
 exports.getCustomerLoginPage = async (req, res) => {
-    res.render('customerLogin')
-}
-
-exports.login = async (req, res) => {
-    let customer = await account.model.findOne({
-        where: {
-            email: req.body.email
-        },
-        raw:true
-    })
-    
-    if(customer != null){
-        bcrypt.compare(req.body.password, customer.password, (err, result) => {
-            if(result === true){
-                req.session.loggedIn = true
-                req.session.uuid = customer.account_uuid
-                res.redirect('/checkout')
-            }else{
-            res.render('customerLogin', {err: "Incorrect Password."})
-            }
-        })
-    }else{
-        res.render('customerLogin', {err: "Incorrect Email."})
-    }
-
-    console.log(customer)
+    res.render('customerLogin', {user: req.isAuthenticated()})
 }
 
 exports.getCustomerRegisterPage = async (req, res) => {
-    res.render('customerRegister')
+    res.render('customerRegister', {user: req.isAuthenticated()})
 }
 
 exports.registerCustomer = async (req, res) => {
@@ -63,11 +38,11 @@ exports.registerCustomer = async (req, res) => {
     let created_account = await account.model.create(
         req.body
     ).catch((err) => {
-        res.render('customerRegister', {err: "Email Already Taken."})
+        res.render('customerRegister', {err: "Email Already Taken.", user: req.isAuthenticated()})
     })
        
     if(created_account != undefined){
-        res.render('customerLogin', {completed: "Successfully Registered."})
+        res.render('customerLogin', {completed: "Successfully Registered.", user: req.isAuthenticated()})
     }
     
     console.log(created_account)

@@ -13,10 +13,10 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             references: { model: "products", key: "product_id" },
         },
-        stock_id: {
+        account_id: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            references: { model: "stocks", key: "stock_id" },
+            references: { model: "accounts", key: "account_id" },
         },
         size: {
             type: DataTypes.ENUM("XS", "S", "M", "L", "XL"),
@@ -35,15 +35,8 @@ module.exports = function (sequelize, DataTypes) {
     });
     
     cart.associate = (models) => {
-      cart.hasMany(models.products, {
-        as: 'Products',
+      cart.belongsTo(models.products, {
         foreignKey: "product_id",
-        onDelete: "cascade",
-      });
-
-      cart.hasMany(models.stocks, {
-        as: 'Stocks',
-        foreignKey: "stock_id",
         onDelete: "cascade",
       });
     };

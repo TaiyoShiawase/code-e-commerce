@@ -1,5 +1,5 @@
 <%- include('./partials/head'); %>
-
+<form action="/addToCart" method="POST">
     <div class="bg-white shadow border rounded mb-5
                 col-sm-12 col-xl-10
                 offset-sm-0 offset-xl-1
@@ -12,7 +12,7 @@
                         <h5 class="text-secondary font-italic pl-4"><%= product[0].type %></h5>
                     </div>
                     <div class="col-6 pt-2">
-                        <p class="text-right">Date</p>
+                        <!-- <p class="text-right">Date</p> -->
                     </div>
                 </div>
             </div>
@@ -30,42 +30,38 @@
             <div class="py-4 px-3 col-sm-12 col-lg-6">
                 <div class="rounded-top bg-light p-3 border
                             col-12">
-                    <span class="font-weight-bold">Brand: </span>Hello world <br>
-                    <span class="font-weight-bold">Title: </span>Hello world <br>
-                    <span class="font-weight-bold">Title: </span>Hello world <br>
+                    <span class="font-weight-bold">Brand: </span><%= brand[0].brand_name %><br>
                 </div>
                 <div class="bg-light border p-3 text-justify">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p><%= product[0].desc %></p>
                 </div>
-                
+                <input type="hidden" name = "product_id" value="<%= product[0].product_id %>">
+                <input type="hidden" name = "stock_id" value="<%= product[0].stock_id %>">
                 <div class="pt-4 px-3 pb-2">
-                    <span class="font-weight-bold ">Size:</span>
-
-                    <div class="col px-3 m-0 btn-group  btn-group-toggle rounded-bottom" 
-                        role="group" aria-label="Basic example" data-toggle="buttons">
-                        <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shirts">
-                            <input type="radio" cname="Shirts" id="option1" autocomplete="off"> XS
-                        </button>
-                        <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shirts">
-                            <input type="radio" cname="Shirts" id="option1" autocomplete="off"> S
-                        </button>
-                        <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Hoodies">
-                            <input type="radio" cname="Hoodies" id="option2" autocomplete="off" checked> M
-                        </button>
-                        <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shorts">
-                            <input type="radio" cname="Shorts" id="option3" autocomplete="off"> L
-                        </button>
-                        <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shoes">
-                            <input type="radio" cname="Shoes" id="option4" autocomplete="off"> XL
-                        </button>
-                    </div>
+                    <span class="font-weight-bold ">Available Sizes:</span>
+                    <% for(var x = 0; x < product.length; x++){ %>
+                        <% if(product[x].availableStocks){ %>
+                            <div class="col px-3 m-0 btn-group  btn-group-toggle rounded-bottom" 
+                                role="group" aria-label="Basic example" data-toggle="buttons">
+                                    <button type="button" class="btn btn-light border active" name = "size" data-bs-toggle="button" value="<%= product[x].size %>">
+                                        <input type="radio"  value = "<%= product[x].size %>" name="size" id="option1" autocomplete="off" required> <%= product[x].size %> &nbsp;&nbsp;  Available Stocks: <%= product[x].availableStocks %>
+                                    </button>
+                                    
+                            </div>
+                        <% } %>    
+                    <% } %>
+                    <% if(locals.message){ %>
+                        <div class="alert alert-success" role="alert">
+                             <%=message.failed%>
+                        </div>
+                    <% } %>
 
                     <div class="row pt-3">
                         <div class="col-6 p-2 pt-3 pr-3">
                             <h5 class="col-sm-12">
                                 <span class="font-weight-bold ">Quantity:</span>
                             </h5>
-                            <input type="number" class="text-right p-2 ml-3 rounded border shadow-sm" 
+                            <input type="number" name = "qty" class="text-right p-2 ml-3 rounded border shadow-sm" 
                                 min="1" max="" step="1" value="1"> <!--setmax-->
                             
                         </div>
@@ -73,16 +69,16 @@
                             <h5 class="col-sm-12">
                                 <span class="font-weight-bold ">Price:</span>
                             </h5>
-                            <span class="ml-3" style="font-size: 25px;">₱ Ammnt.00</span>
+                            <span class="ml-3" style="font-size: 25px;">₱ <%= product[0].unit_price %>.00</span>
                         </div>
                     </div>
                     <div class="col-10 offset-1 p-1 pt-2 text-center justify-content-center">
-                        <a href="/cart" type="button" class="col btn btn-light btn-md mr-1 mb-2 py-2 px-4  border shadow-sm">
-                            <i class="fas fa-shopping-cart pr-2 align-self-center"></i>Add to cart</a>
+                        <button type="submit" class="col btn btn-light btn-md mr-1 mb-2 py-2 px-4  border shadow-sm">
+                            <i class="fas fa-shopping-cart pr-2 align-self-center"></i>Add to cart</button>
                     </div>
                 </div>
             </div>
-
+        </form>
         </div>
     </div>    
 

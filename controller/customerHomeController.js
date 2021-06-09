@@ -1,13 +1,6 @@
 const account = require('../models/account')
 
 exports.getCustomerHomepage = async (req, res) => {
-    res.render('customerHome')
+    res.render('customerHome', {user: req.isAuthenticated()})
 }
 
-exports.getCustomerCart = async (req, res) => {
-    res.render('customerCart')
-}
-
-exports.getCustomerCheckoutPage = async (req, res) => {
-    res.render('customerCheckout')
-}

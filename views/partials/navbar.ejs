@@ -21,7 +21,8 @@
                                 <a class="dropdown-item" href="/product/hoodies-all">HONEY CO.</a>
                                 <a class="dropdown-item" href="/product/hoodies-all">TIGERHOODS</a>
                             </div>
-                        <a href="/purchase-history" class="nav mx-2">Purchase History</a>
+                        <a href="" class="nav mx-2">About</a>
+                        <a href="" class="nav mx-2">Contact</a>
                     </div>
                 </div>
 
@@ -32,10 +33,19 @@
                         <a class="nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="./images/icons/user.png" width="26px" alt="">
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="/register">Sign Up</a>
-                            <a class="dropdown-item" href="/login">Login</a>
-                        </div>
+                        <% if(user){ %>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <form action="/logout?_method=DELETE" method="POST">
+                                    <button type="submit" class="dropdown-item" href="/logout">Logout</button>
+                                </form>
+                            </div>
+                        <% }else{ %>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <a class="dropdown-item" href="/register">Sign Up</a>
+                                <a class="dropdown-item" href="/login">Login</a>
+                            </div>
+                        <% } %>
+                     
                         <a href="/cart" class="nav ml-3"><img src="./images/icons/cart.png" width="26px" alt=""></a>
                     </div>
                 </div>

@@ -2,13 +2,24 @@
         <div class="row">
             <div class="col offset-3">
                 <div class="card border-primary mb-3" style="max-width: 45rem;">
-                    <h4 class="card-header card-title">CHECKOUT</h4>
+                   <center> <h1 class="card-header card-title">ORDER DETAILS</h1> </center>
                     <div class="card-body">
-                        <br><br><br><br><br><br><br><br><br><br><br><br>
-                        <center>
-                        ORDER DETAILS HERE
-                        </center>
-                        <br><br><br><br><br><br><br><br><br><br><br><br>
+                        <h4 class="card-title">Name:</h4> 
+                        <p class="card-text"><%= user.firstName %> <%= user.lastName %></p>
+                        <h4 class="card-title">Address:</h4> 
+                        <p class="card-text"><%= user.address %></p>
+                        <h4 class="card-title">Phone Number:</h4> 
+                        <p class="card-text"><%= user.phoneNumber %></p>
+                        <h4 class="card-title">Email:</h4> 
+                        <p class="card-text"><%= user.email %></p>
+                        <h4 class="card-title">Total Quantity:</h4> 
+                        <p class="card-text"><%= details.totalQuantity %></p>
+                        <h4 class="card-title">Total Amount Due:</h4> 
+                        <p class="card-text"><%= details.totalAmount %></p>
+
+                        <div class="text-right col-sm-12">
+                            <button type="button" class="btn bg-info btn-md mr-1 mb-2 py-2 px-4  border shadow-sm">Confirm</button>    
+                        </div>
                     </div>
                 </div>
             </div>

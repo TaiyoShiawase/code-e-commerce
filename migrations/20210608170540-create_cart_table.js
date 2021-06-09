@@ -12,12 +12,11 @@ module.exports = {
       product_id: {
         type: Sequelize.BIGINT,
         allowNull: false,
-        references: { model: "products", key: "product_id" },
+        references: { model: "products", key: "product_id" }
       },
-      stock_id: {
+      account_id:{
         type: Sequelize.BIGINT,
         allowNull: false,
-        references: { model: "stocks", key: "stock_id" },
       },
       size: {
         type: Sequelize.ENUM("XS", "S", "M", "L", "XL"),

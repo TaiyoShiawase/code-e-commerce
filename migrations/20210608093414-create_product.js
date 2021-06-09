@@ -14,11 +14,6 @@ module.exports = {
         allowNull: false,
         references: { model: "brands", key: "brand_id" },
       },
-      stock_id: {
-        type: Sequelize.BIGINT,
-        allowNull: false,
-        references: { model: "stocks", key: "stock_id" },
-      },
       name: {
         type: Sequelize.STRING,
         allowNull: false,

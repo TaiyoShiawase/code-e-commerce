@@ -1,5 +1,5 @@
 
 
 exports.getAllShirtProducts = async (req, res) => {
-    res.render('allShirtProducts')
+    res.render('allShirtProducts', {user: req.isAuthenticated()})
 }

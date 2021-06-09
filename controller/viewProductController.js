@@ -3,28 +3,12 @@
   
 const { Op } = require("sequelize");
 const db = require('../models/index')
-
-const Brand = db.brands;
-const Product = db.products;
+const { QueryTypes } = require('sequelize');
 
 exports.viewProduct = async (req, res) => {
-	
+    
+    const product = await db.sequelize.query("SELECT * FROM products INNER JOIN stocks ON products.product_id = stocks.product_id", { type: QueryTypes.SELECT });
+    const brand = await db.sequelize.query("SELECT * FROM brands WHERE brands.brand_id = :brand_id", {replacements: {brand_id: product[0].brand_id}, type: QueryTypes.SELECT });
 
-	
-	try {
-		const product = await Product.findAll({
-            where: {
-                product_id: req.params.product_id,
-            },
-        }
-    )
-      
-        
-		res.render("productDetails", { product: product});
-	} catch (err) {
-		console.log(err)
-	// }
-	}
-    //  const brands = await Brand.findAll();
-    //  console.log(brands)
+    res.render("productDetails", { product: product, brand: brand, user: req.isAuthenticated()});
 };

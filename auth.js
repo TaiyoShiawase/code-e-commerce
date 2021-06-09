@@ -9,15 +9,15 @@ exports.passcomp = (req, res, next) => {
 exports.checkAuthentication = (req, res, next) => {
     if(req.isAuthenticated()) {
         next()
+    }else{
+        res.redirect('/login')    
     }
-
-    res.redirect('/login')
 }
 
 exports.checkNotAuthenticated = (req, res, next) => {
     if(req.isAuthenticated()) {
-        res.redirect('/checkout')
+        return res.redirect('/checkout')
+    }else{
+        next()
     }
-
-    next()
 }

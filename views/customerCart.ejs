@@ -12,7 +12,7 @@
                     <h5 class="text-secondary font-italic pl-4">Order Summary</h5>
                 </div>
                 <div class="col-6 pt-2">
-                    <p class="text-right" style="font-size: 15px;"># Items</p>
+                    <p class="text-right" style="font-size: 15px;"><%= product.length %> Items</p>
                 </div>
             </div>
         </div>
@@ -20,287 +20,118 @@
 
     <!------------------------------------------CART LIST ITEMS START---------------------------->
     <div class="bg-light border-top border-bottom py-4 px-5">
-        
-        <!--ITEM CARD-->
-        <div class="bg-white border rounded col shadow-sm pb-4 mb-3">
-            <div class="row">
-                <div class="col border-bottom">
-                    <div class="row">
-                        <div class="p-3 pt-0 col-sm-6 col-md-4 col-xl-4
-                        offset-sm-3 offset-md-0">
-                            <!--IMG UI-->
-                            <div>
-                                <figure class="view overlay rounded z-depth-1 main-img">
-                                    <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                                        data-size="710x823">
-                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                                            class="img-fluid z-depth-1 border rounded ">
-                                    </a>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <!--ITEM DETAILS-->
-                        <div class="py-4 px-3 col-sm-12 col-md-8 col-xl-8 ">
-                            <h2>Item Name</h2>
-                            <div class="row pb-1">
-                                <div>
-                                    <h5 class="text-secondary font-italic pl-4">Item Type</h5>
-                                </div>
-                                <div class="pr-4 col text-right"> 
-                                    <span class="font-weight-bold" style="font-size: 14px;">Price: </span>
-                                    <span class="ml-3 mr-2" style="font-size: 20px;">₱ Ammnt.00</span>
-                                </div>
-                            </div>
-                            <div class="rounded-top bg-light p-3 pl-4 border mb-3
-                                        col-12">
-                                <span class="font-weight-bold">Brand: </span>Hello world <br>
-                                <span class="font-weight-bold">Title: </span>Hello world <br>
-                                <span class="font-weight-bold">Title: </span>Hello world <br>
-                            </div>
-                            
-                            <span class="font-weight-bold">Size:</span>
-
-                            <div class="col px-3 pt-2 m-0 btn-group  btn-group-toggle rounded-bottom" 
-                                role="group" aria-label="Basic example" data-toggle="buttons">
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shirts">
-                                    <input type="radio" cname="Shirts" id="option1" autocomplete="off"> XS
-                                </button>
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shirts">
-                                    <input type="radio" cname="Shirts" id="option1" autocomplete="off"> S
-                                </button>
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Hoodies">
-                                    <input type="radio" cname="Hoodies" id="option2" autocomplete="off" checked> M
-                                </button>
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shorts">
-                                    <input type="radio" cname="Shorts" id="option3" autocomplete="off"> L
-                                </button>
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shoes">
-                                    <input type="radio" cname="Shoes" id="option4" autocomplete="off"> XL
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="py-0 px-3
-                            col-sm-12 col-md-12 m-0">
-                    <div class="bg-light p-3 rounded-bottom mb-4">
+     <% if(product.length){ %>   
+        <% for(var x = 0; x < product.length; x++){ %>
+            <!--ITEM CARD-->
+            <div class="bg-white border rounded col shadow-sm pb-4 mb-3">
+                <div class="row">
+                    <div class="col border-bottom">
                         <div class="row">
-                            <div class="col-6 pt-2 text-right">
-                                <span class="font-weight-bold" style="font-size: 16px;">Quantity: </span>
-                                <span class="ml-3 text-right" style="font-size: 20px;">12 items</span>
-                            </div>
-                            <div class="col-6 text-right">
-                                <span class="font-weight-bold" style="font-size: 16px;">Total Price: </span>
-                                <span class="ml-3" style="font-size: 25px;">₱ Ammnt.00</span>
+                            <div class="p-3 pt-0 col-sm-6 col-md-4 col-xl-4
+                            offset-sm-3 offset-md-0">
+                                <!--IMG UI-->
+                                <div>
+                                    <figure class="view overlay rounded z-depth-1 main-img">                                    
+                                        <img src="<%= product[x].image %>" class="img-fluid z-depth-1 border rounded ">
+                                    </figure>
+                                </div>
                             </div>
 
+                            <!--ITEM DETAILS-->
+                            <div class="py-4 px-3 col-sm-12 col-md-8 col-xl-8 ">
+                                <h2><%= product[x].name %></h2>
+                                <div class="row pb-1">
+                                    <div>
+                                        <h5 class="text-secondary font-italic pl-4"><%= product[x].type %></h5>
+                                    </div>
+                                    <div class="pr-4 col text-right"> 
+                                        <span class="font-weight-bold" style="font-size: 14px;">Price: </span>
+                                        <span class="ml-3 mr-2" style="font-size: 20px;">₱ <%= product[x].unit_price %>.00</span>
+                                    </div>
+                                </div>
+                                <div class="rounded-top bg-light p-3 pl-4 border mb-3
+                                            col-12">
+                                </div>
+                                
+                                <span class="font-weight-bold">Size:</span>
+
+                                <div class="col px-3 pt-2 m-0 btn-group  btn-group-toggle rounded-bottom" 
+                                    role="group" aria-label="Basic example" data-toggle="buttons">
+                                    
+                                    <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shoes">
+                                        <%= product[x].size %>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="text-right col-sm-12">
-                        <a href="/product/shirts/id" type="button" class="btn btn-light btn-md mr-3 mb-2 py-2 px-4  border shadow-sm">
-                            View Item</a>
+                    
+                    <div class="py-0 px-3
+                                col-sm-12 col-md-12 m-0">
+                        <div class="bg-light p-3 rounded-bottom mb-4">
+                            <div class="row">
+                                <div class="col-6 pt-2 text-right">
+                                    <span class="font-weight-bold" style="font-size: 16px;">Quantity: </span>
+                                    <span class="ml-3 text-right" style="font-size: 20px;"><%= product[x].qty %> items</span>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <span class="font-weight-bold" style="font-size: 16px;">Total Price: </span>
+                                    <span class="ml-3" style="font-size: 25px;">₱ <%= product[x].unit_price * product[0].qty %>.00</span>
+                                </div>
 
-                        <a href="#" type="button" class="btn btn-danger btn-md mr-1 mb-2 py-2 px-4  border shadow-sm">
-                            <i class="fas fa-shopping-cart pr-2 align-self-center"></i>Remove from Cart</a>
-                    </div>                    
+                            </div>
+                        </div>
+                        <div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="declineModalLabel">Are you sure you want to remove product?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                Are you sure you want to continue?
+                                </div>
+                                <div class="modal-footer">
+                                <a href="/removeProduct?cart_id=<%= product[x].cart_id %>"><button type="button" class="btn btn-primary" style="background-color:red">Yes</button></a>
+                                <a href="/cart"><button type="button" class="btn btn-primary" style="background-color:rgb(79, 79, 79)">Cancel</button></a>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="text-right col-sm-12">
+                            <button data-toggle="modal" data-target="#removeModal" type="button" class="btn btn-danger btn-md mr-1 mb-2 py-2 px-4  border shadow-sm"><i class="fas fa-shopping-cart pr-2 align-self-center"></i> Remove from Cart</button>    
+                        </div>                    
+                    </div>
                 </div>
             </div>
-        </div>
-
-        
-        <!--ITEM CARD-->
-        <div class="bg-white border rounded col shadow-sm pb-4 mb-3">
-            <div class="row">
-                <div class="col border-bottom">
-                    <div class="row">
-                        <div class="p-3 pt-0 col-sm-6 col-md-4 col-xl-4
-                        offset-sm-3 offset-md-0">
-                            <!--IMG UI-->
-                            <div>
-                                <figure class="view overlay rounded z-depth-1 main-img">
-                                    <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                                        data-size="710x823">
-                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                                            class="img-fluid z-depth-1 border rounded ">
-                                    </a>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <!--ITEM DETAILS-->
-                        <div class="py-4 px-3 col-sm-12 col-md-8 col-xl-8 ">
-                            <h2>Item Name</h2>
-                            <div class="row pb-1">
-                                <div>
-                                    <h5 class="text-secondary font-italic pl-4">Item Type</h5>
-                                </div>
-                                <div class="pr-4 col text-right"> 
-                                    <span class="font-weight-bold" style="font-size: 14px;">Price: </span>
-                                    <span class="ml-3 mr-2" style="font-size: 20px;">₱ Ammnt.00</span>
-                                </div>
-                            </div>
-                            <div class="rounded-top bg-light p-3 pl-4 border mb-3
-                                        col-12">
-                                <span class="font-weight-bold">Brand: </span>Hello world <br>
-                                <span class="font-weight-bold">Title: </span>Hello world <br>
-                                <span class="font-weight-bold">Title: </span>Hello world <br>
-                            </div>
-                            
-                            <span class="font-weight-bold">Size:</span>
-
-                            <div class="col px-3 pt-2 m-0 btn-group  btn-group-toggle rounded-bottom" 
-                                role="group" aria-label="Basic example" data-toggle="buttons">
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shirts">
-                                    <input type="radio" cname="Shirts" id="option1" autocomplete="off"> XS
-                                </button>
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shirts">
-                                    <input type="radio" cname="Shirts" id="option1" autocomplete="off"> S
-                                </button>
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Hoodies">
-                                    <input type="radio" cname="Hoodies" id="option2" autocomplete="off" checked> M
-                                </button>
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shorts">
-                                    <input type="radio" cname="Shorts" id="option3" autocomplete="off"> L
-                                </button>
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shoes">
-                                    <input type="radio" cname="Shoes" id="option4" autocomplete="off"> XL
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="py-0 px-3
-                            col-sm-12 col-md-12 m-0">
-                    <div class="bg-light p-3 rounded-bottom mb-4">
-                        <div class="row">
-                            <div class="col-6 pt-2 text-right">
-                                <span class="font-weight-bold" style="font-size: 16px;">Quantity: </span>
-                                <span class="ml-3 text-right" style="font-size: 20px;">12 items</span>
-                            </div>
-                            <div class="col-6 text-right">
-                                <span class="font-weight-bold" style="font-size: 16px;">Total Price: </span>
-                                <span class="ml-3" style="font-size: 25px;">₱ Ammnt.00</span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="text-right col-sm-12">
-                        <a href="/product/shirts/id" type="button" class="btn btn-light btn-md mr-3 mb-2 py-2 px-4  border shadow-sm">
-                            View Item</a>
-
-                        <a href="#" type="button" class="btn btn-danger btn-md mr-1 mb-2 py-2 px-4  border shadow-sm">
-                            <i class="fas fa-shopping-cart pr-2 align-self-center"></i>Remove from Cart</a>
-                    </div>                    
-                </div>
-            </div>
-        </div>
-
-        
-        <!--ITEM CARD-->
-        <div class="bg-white border rounded col shadow-sm pb-4 mb-3">
-            <div class="row">
-                <div class="col border-bottom">
-                    <div class="row">
-                        <div class="p-3 pt-0 col-sm-6 col-md-4 col-xl-4
-                        offset-sm-3 offset-md-0">
-                            <!--IMG UI-->
-                            <div>
-                                <figure class="view overlay rounded z-depth-1 main-img">
-                                    <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                                        data-size="710x823">
-                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                                            class="img-fluid z-depth-1 border rounded ">
-                                    </a>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <!--ITEM DETAILS-->
-                        <div class="py-4 px-3 col-sm-12 col-md-8 col-xl-8 ">
-                            <h2>Item Name</h2>
-                            <div class="row pb-1">
-                                <div>
-                                    <h5 class="text-secondary font-italic pl-4">Item Type</h5>
-                                </div>
-                                <div class="pr-4 col text-right"> 
-                                    <span class="font-weight-bold" style="font-size: 14px;">Price: </span>
-                                    <span class="ml-3 mr-2" style="font-size: 20px;">₱ Ammnt.00</span>
-                                </div>
-                            </div>
-                            <div class="rounded-top bg-light p-3 pl-4 border mb-3
-                                        col-12">
-                                <span class="font-weight-bold">Brand: </span>Hello world <br>
-                                <span class="font-weight-bold">Title: </span>Hello world <br>
-                                <span class="font-weight-bold">Title: </span>Hello world <br>
-                            </div>
-                            
-                            <span class="font-weight-bold">Size:</span>
-
-                            <div class="col px-3 pt-2 m-0 btn-group  btn-group-toggle rounded-bottom" 
-                                role="group" aria-label="Basic example" data-toggle="buttons">
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shirts">
-                                    <input type="radio" cname="Shirts" id="option1" autocomplete="off"> XS
-                                </button>
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shirts">
-                                    <input type="radio" cname="Shirts" id="option1" autocomplete="off"> S
-                                </button>
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Hoodies">
-                                    <input type="radio" cname="Hoodies" id="option2" autocomplete="off" checked> M
-                                </button>
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shorts">
-                                    <input type="radio" cname="Shorts" id="option3" autocomplete="off"> L
-                                </button>
-                                <button type="button" class="btn btn-light border active" data-bs-toggle="button" value="Shoes">
-                                    <input type="radio" cname="Shoes" id="option4" autocomplete="off"> XL
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="py-0 px-3
-                            col-sm-12 col-md-12 m-0">
-                    <div class="bg-light p-3 rounded-bottom mb-4">
-                        <div class="row">
-                            <div class="col-6 pt-2 text-right">
-                                <span class="font-weight-bold" style="font-size: 16px;">Quantity: </span>
-                                <span class="ml-3 text-right" style="font-size: 20px;">12 items</span>
-                            </div>
-                            <div class="col-6 text-right">
-                                <span class="font-weight-bold" style="font-size: 16px;">Total Price: </span>
-                                <span class="ml-3" style="font-size: 25px;">₱ Ammnt.00</span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="text-right col-sm-12">
-                        <a href="/product/shirts/id" type="button" class="btn btn-light btn-md mr-3 mb-2 py-2 px-4  border shadow-sm">
-                            View Item</a>
-
-                        <a href="#" type="button" class="btn btn-danger btn-md mr-1 mb-2 py-2 px-4  border shadow-sm">
-                            <i class="fas fa-shopping-cart pr-2 align-self-center"></i>Remove from Cart</a>
-                    </div>                    
-                </div>
-            </div>
-        </div>
-
+        <% } %>
+    <% }else{ %>
+        <div class="alert alert-dismissible alert-primary">
+            <strong>Cart is Empty</strong>
+          </div>
+    <% } %>
     </div>
     <!------------------------------------------CART LIST ITEMS END---------------------------->
         
 
     <div class="col-12 text-right pt-4 pr-5">
         <span class="font-weight-bold" style="font-size: 16px;">Total Price: </span>
-        <span class="ml-3" style="font-size: 25px;">₱ Ammnt.00</span>
+        <span class="ml-3" style="font-size: 25px;">₱ .00</span>
     </div>
     <div class="">
-        <input type="submit" class="btn btn-light offset-2 col-8 mt-3 border" style="font-size: 22px;" value="Purchase">
+    <form action="/checkout" method="POST">
+        <input type="hidden" name="account_id" value="<%= id %>">
+        <input type="hidden" name="totalQuantity" value="<%= product.length %>">
+        <input type="hidden" name="totalAmount" value="10000.00">
+        <% if(product.length <= 0){ %>
+            <input type="submit" class="btn btn-light offset-2 col-8 mt-3 border" style="font-size: 22px;" value="Purchase" disabled>
+        <% }else{ %>
+            <input type="submit" class="btn btn-light offset-2 col-8 mt-3 border" style="font-size: 22px;" value="Purchase">
+        <% } %>
+    </form>
     </div>
-
-
-
 </div>
 
 

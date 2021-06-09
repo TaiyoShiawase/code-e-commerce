@@ -8,7 +8,7 @@ exports.getAllProducts = async (req, res) => {
     try {
 		const product = await Product.findAll()		
 			
-		res.render("allProducts", { product: product });
+		res.render("allProducts", { product: product , user: req.isAuthenticated()});
 	} catch (err) {
 		console.log(err)
 

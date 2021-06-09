@@ -8,9 +8,6 @@ const Brand = db.brands;
 const Product = db.products;
 
 exports.searchByBrand = async (req, res) => {
-	
-
-	
 	try {
 		const product = await Product.findAll({
 			
@@ -24,12 +21,9 @@ exports.searchByBrand = async (req, res) => {
 					} 
 				},
 		})		
-			
-		res.render("brandProducts", { product: product });
+
+		res.render("brandProducts", { product: product, user: req.isAuthenticated() });
 	} catch (err) {
 		console.log(err)
-	// }
 	}
-    //  const brands = await Brand.findAll();
-    //  console.log(brands)
 };

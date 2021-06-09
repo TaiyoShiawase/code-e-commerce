@@ -1,44 +1,39 @@
 const db = require('../models/index')
+const { QueryTypes } = require('sequelize');
 
 const Cart = db.cart;
-const Product = db.products
-const Stock = db.stocks
 
 exports.addToCart = async (req, res) => {
-    console.log(req.query)
-    
-    let product = await Cart.create(
-       req.query
-    )
+    req.body.account_id = req.user.account_id
 
-    console.log(product);
+    const stocks = await db.sequelize.query('SELECT availableStocks FROM stocks WHERE size = :size && product_id = :product_id', {replacements: {size: req.body.size, product_id: req.body.product_id}, type: QueryTypes.SELECT })
 
-    if(product){res.redirect('/cart')}
+    if(req.body.qty > stocks[0].availableStocks){
+        req.flash('failed', 'Not enough stocks');
+        res.locals.message = req.flash();
+        res.redirect('/product/' + req.body.product_id)
+    }else{
+        let product = await Cart.create(
+            req.body
+         )
+     
+         if(product){res.redirect('/product/' + req.body.product_id)}
+    }
 }
 
-exports.getCart = async (req, res) => {
-    res.render('customerCart')
+exports.getCart = async (req, res) => { 
+    const product = await db.sequelize.query("SELECT * FROM cart INNER JOIN products ON cart.product_id = products.product_id WHERE account_id = :account_id", {replacements: {account_id: req.user.account_id}, type: QueryTypes.SELECT });
+   
+    res.render('customerCart', {product: product, user: req.isAuthenticated(), id: req.user.account_id})
+}
+
+exports.removeProduct = async (req, res) => {
+    await db.sequelize.query("DELETE FROM cart WHERE cart_id = :cart_id", {replacements: {cart_id: req.query.cart_id}, type: QueryTypes.DELETE })
+
+    res.redirect('/cart')
 }
 
 
-exports.searchByBrand = async (req, res) => {
-	try {
-		const product = await Product.findAll({
-			include: 
-				{
-					model: Brand,
-					attributes: ["brand_name", "brand_id"], 
-					where:{
-						brand_name: req.query.search,	
-					} 
-				},
-		})		
-			
-		res.render("brandProducts", { product: product });
-	} catch (err) {
-		console.log(err)
-	}
-};
 
 
 
