@@ -30,12 +30,12 @@ navbar as partials and included it in every ejs file but some pages wont display
 
 CAN: 
 
--login/logout
--registration
--search specific brand name (Tigerhoods, Code, HoneyCo)
--view product specifiy quantity 
--add to cart
--quantity count is updated everytime it is added to cart
--delete it from cart
--checkout but no payment
--prices are dynamic
+- login/logout
+- registration
+- search specific brand name (Tigerhoods, Code, HoneyCo)
+- view product specifiy quantity 
+- add to cart
+- quantity count is updated everytime it is added to cart
+- delete it from cart
+- checkout but no payment
+- prices are dynamic
