@@ -47,8 +47,10 @@
                                         <input type="radio"  value = "<%= product[x].size %>" name="size" id="option1" autocomplete="off" required> <%= product[x].size %> &nbsp;&nbsp;  Available Stocks: <%= product[x].availableStocks %>
                                     </button>
                                     
-                            </div>
-                        <% } %>    
+                            </div> &nbsp;
+                        <% }else{ %>
+                             none
+                        <% } %>
                     <% } %>
                     <% if(locals.message){ %>
                         <div class="alert alert-success" role="alert">
@@ -73,8 +75,13 @@
                         </div>
                     </div>
                     <div class="col-10 offset-1 p-1 pt-2 text-center justify-content-center">
+                    <% if(product[0].availableStocks == 0){ %>
+                        <button type="submit" class="col btn btn-light btn-md mr-1 mb-2 py-2 px-4  border shadow-sm" disabled>
+                            <i class="fas fa-shopping-cart pr-2 align-self-center"></i>Add to cart</button>
+                    <% }else{ %>
                         <button type="submit" class="col btn btn-light btn-md mr-1 mb-2 py-2 px-4  border shadow-sm">
                             <i class="fas fa-shopping-cart pr-2 align-self-center"></i>Add to cart</button>
+                    <% } %>
                     </div>
                 </div>
             </div>

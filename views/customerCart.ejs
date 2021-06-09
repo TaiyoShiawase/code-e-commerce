@@ -20,6 +20,7 @@
 
     <!------------------------------------------CART LIST ITEMS START---------------------------->
     <div class="bg-light border-top border-bottom py-4 px-5">
+    <% var total = 0 %>
      <% if(product.length){ %>   
         <% for(var x = 0; x < product.length; x++){ %>
             <!--ITEM CARD-->
@@ -106,6 +107,7 @@
                     </div>
                 </div>
             </div>
+            <% total = total + product[x].unit_price * product[0].qty %> 
         <% } %>
     <% }else{ %>
         <div class="alert alert-dismissible alert-primary">
@@ -118,13 +120,13 @@
 
     <div class="col-12 text-right pt-4 pr-5">
         <span class="font-weight-bold" style="font-size: 16px;">Total Price: </span>
-        <span class="ml-3" style="font-size: 25px;">₱ .00</span>
+        <span class="ml-3" style="font-size: 25px;">₱ <%= total %>.00</span>
     </div>
     <div class="">
     <form action="/checkout" method="POST">
         <input type="hidden" name="account_id" value="<%= id %>">
         <input type="hidden" name="totalQuantity" value="<%= product.length %>">
-        <input type="hidden" name="totalAmount" value="10000.00">
+        <input type="hidden" name="totalAmount" value="<%= total %>">
         <% if(product.length <= 0){ %>
             <input type="submit" class="btn btn-light offset-2 col-8 mt-3 border" style="font-size: 22px;" value="Purchase" disabled>
         <% }else{ %>
